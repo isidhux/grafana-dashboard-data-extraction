@@ -1,7 +1,7 @@
 const axios = require('axios')
 const url = 'http://ingra01p1.dev.smf1.mobitv:3000'
 const fs = require('fs')
-console.log(process.env.process.env.GRAFANA_TOKEN)
+console.log(process.env.GRAFANA_TOKEN)
 axios({
     method:'post',
     url:'http://ingra01p1.dev.smf1.mobitv:3000/api/ds/query',
