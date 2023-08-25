@@ -1,6 +1,6 @@
 const axios = require('axios')
 const url = 'http://ingra01p1.dev.smf1.mobitv:3000'
-console.log(proccess.env.ENV)
+console.log(process.env.ENV)
 axios({
     method:'post',
     url:'http://ingra01p1.dev.smf1.mobitv:3000/api/ds/query',
