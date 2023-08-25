@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/isidhux/grafana-dashboard-data-extraction#readme",
   "dependencies": {
-    "axios": "^1.4.0"
+    "axios": "^1.4.0",
+    "fs": "^0.0.1-security"
   }
 }

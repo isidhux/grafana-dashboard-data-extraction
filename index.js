@@ -1,12 +1,13 @@
 const axios = require('axios')
 const url = 'http://ingra01p1.dev.smf1.mobitv:3000'
+const fs = require('fs')
 console.log(process.env.ENV)
 axios({
     method:'post',
     url:'http://ingra01p1.dev.smf1.mobitv:3000/api/ds/query',
     headers:{
         'content-type':'application/json',
-        'Authorization': 'Bearer eyJrIjoiSkVxNjhHSjZtZk1qTEVFNk43anp0b2RyWENPYWtlTjAiLCJuIjoic2NyaXB0LTAxIiwiaWQiOjF9'
+        'Authorization': `Bearer ${process.env.GRAFANA_TOKEN}`
     },
     data:{
         "queries":[{"datasource":{"uid":"ueOmSTWVz","type":"prometheus"},"expr":"sum by (mode)(irate(node_cpu_seconds_total{mode=\"system\",instance=~\"juing01p1.dev.smf1.mobitv:9100\",job=~\"apache_exporter\"}[5m])) * 100","format":"time_series","interval":"10s","intervalFactor":2,"legendFormat":"System - Processes executing in kernel mode","refId":"A","step":20,"queryType":"timeSeriesQuery","exemplar":false,"requestId":"3A","utcOffsetSec":19800,"datasourceId":9,"intervalMs":3600000,"maxDataPoints":836},
@@ -55,4 +56,6 @@ axios({
         "from":"1690351284776",
         "to":"1692943284776"
     }
-}).then(res=>console.log(res))
+}).then(res=>{
+    fs.writeFile('/code/output.json',JSON.stringify(res.data))
+})
