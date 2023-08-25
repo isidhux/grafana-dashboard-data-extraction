@@ -1,0 +1,29 @@
+{
+  "name": "grafana-dashboard-data-extraction",
+  "version": "1.0.0",
+  "description": "This package contains scripts to extract data from grafana dashboards using API endpoint.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isidhux/grafana-dashboard-data-extraction.git"
+  },
+  "keywords": [
+    "grafana",
+    "dashborad",
+    "data",
+    "extraction",
+    "api"
+  ],
+  "author": "Inderdeep Singh Sidhu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isidhux/grafana-dashboard-data-extraction/issues"
+  },
+  "homepage": "https://github.com/isidhux/grafana-dashboard-data-extraction#readme",
+  "dependencies": {
+    "axios": "^1.4.0"
+  }
+}
