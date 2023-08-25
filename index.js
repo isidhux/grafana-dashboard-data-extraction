@@ -1,4 +1,5 @@
 const axios = require('axios')
+require('dotenv').config()
 const url = 'http://ingra01p1.dev.smf1.mobitv:3000'
 const fs = require('fs')
 console.log(process.env.GRAFANA_TOKEN)
@@ -57,5 +58,9 @@ axios({
         "to":"1692943284776"
     }
 }).then(res=>{
-    fs.writeFile('/code/output.json',JSON.stringify(res.data))
+    fs.writeFile('/code/output.json',JSON.stringify(res.data),err => {
+        if (err) {
+          console.error(err);
+        }
+    })
 })
