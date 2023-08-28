@@ -6,8 +6,8 @@ const fs = require('fs')
 var stream = fs.createWriteStream('/code/output', {flags: 'a'});
 const hosts = require('./hosts')
 async function getValues(hosts,stream){
-    const promises = hosts.map( (host)=>{
-        axios({
+    const promises = hosts.map(async (host)=>{
+        await axios({
             method:'post',
             url:`${url}/api/ds/query`,
             headers:{
@@ -64,7 +64,7 @@ async function getValues(hosts,stream){
         })
     })
     console.log(promises)
-    const resolved = await Promise.all(promises)
+    const resolved = await Promise.allSettled(promises)
     console.log(resolved)
     await resolved.forEach((res,i)=>{
         const out={
