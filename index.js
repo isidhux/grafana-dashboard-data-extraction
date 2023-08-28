@@ -44,7 +44,8 @@ axios({
         'Q':res.data.results.Q.frames[0].data.values[1].sort(function (a, b) {  return b-a;  })
     }
     console.log(out);
-    fs.writeFile('/code/output.json',out,err => {
+    
+    fs.writeFile('/code/output.json',out['A'][0],err => {
         if (err) {
           console.error(err);
         }
