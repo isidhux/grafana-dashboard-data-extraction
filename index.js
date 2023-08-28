@@ -64,6 +64,7 @@ async function getValues(hosts,stream){
         })
     })
     const resolved = await Promise.all(promises)
+    console.log(resolved)
     await resolved.forEach((res,i)=>{
         const out={
             'A':res.data.results.A.frames[0].data.values[1].sort(function (a, b) {  return b-a;  }),
