@@ -45,7 +45,8 @@ axios({
     }
     console.log(out);
     const final = `\nmax-cpu-kernel ${out['A'][0]}`
-    fs.writeFile('/code/output.json',final,err => {
+    console.log(final);
+    fs.writeFile('/code/output',Buffer.from(final, 'utf-8'),err => {
         if (err) {
           console.error(err);
         }
