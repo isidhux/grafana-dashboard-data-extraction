@@ -32,33 +32,17 @@ axios({
         "datasourceId": 9,
         "intervalMs": 3600000,
         "maxDataPoints": 836
-    },
-    {
-        "datasource": {
-            "uid": "ueOmSTWVz",
-            "type": "prometheus"
-        },
-        "expr": "node_load1{instance=~\"juing01p1.dev.smf1.mobitv:9100\",job=~\"apache_exporter\"}",
-        "format": "time_series",
-        "intervalFactor": 4,
-        "legendFormat": "Load 1m",
-        "refId": "T",
-        "step": 480,
-        "queryType": "timeSeriesQuery",
-        "exemplar": false,
-        "requestId": "7A",
-        "utcOffsetSec": 19800,
-        "interval": "",
-        "datasourceId": 9,
-        "intervalMs": 3600000,
-        "maxDataPoints": 836
     }],
         "range":{"from": "2023-07-26T06:01:24.776Z", "to": "2023-08-25T06:01:24.776Z", "raw": {"from": "now-30d", "to": "now"}},
         "from":"1690351284776",
         "to":"1692943284776"
     }
 }).then(res=>{
-    fs.writeFile('/code/output.json',JSON.stringify(res.data),err => {
+    const out={
+        'A':res.data.results.A.frames[0].data.values[1].sort(function (a, b) {  return b-a;  }),
+        'Q':res.data.results.Q.frames[0].data.values[1].sort(function (a, b) {  return b-a;  })
+    }
+    fs.writeFile('/code/output.json',out,err => {
         if (err) {
           console.error(err);
         }
