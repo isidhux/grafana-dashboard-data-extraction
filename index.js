@@ -44,7 +44,7 @@ axios({
         'Q':res.data.results.Q.frames[0].data.values[1].sort(function (a, b) {  return b-a;  })
     }
     console.log(out);
-    const final = `\nmax-cpu-kernel ${out['A'][0]}`
+    const final = `max-cpu-kernel ${out['A'][0]} \n mem-apps ${out['Q'][0]/1073741824}`
     console.log(final);
     fs.writeFile('/code/output',final,err => {
         if (err) {
