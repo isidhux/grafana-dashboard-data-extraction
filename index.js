@@ -69,9 +69,5 @@ axios({
     const cpu = out['A'][0]
     const final = `biehd01p1.dev.smf1.mobitv  => max-cpu-kernel: ${cpu.toPrecision(4)} mem-apps: ${mem.toPrecision(4)} \n`
     console.log(final);
-    stream.write('/code/output',final,err => {
-        if (err) {
-          console.error(err);
-        }
-    })
+    stream.write(final)
 }).then(()=>stream.end())
