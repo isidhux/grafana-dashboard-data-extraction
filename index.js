@@ -2,10 +2,11 @@ const axios = require('axios')
 require('dotenv').config()
 const url = 'http://ingra01p1.dev.smf1.mobitv:3000'
 const fs = require('fs')
+const hosts = require('./hosts')
 console.log(process.env.GRAFANA_TOKEN)
 axios({
     method:'post',
-    url:'http://ingra01p1.dev.smf1.mobitv:3000/api/ds/query',
+    url:`${url}/api/ds/query`,
     headers:{
         'content-type':'application/json',
         'Authorization': `Bearer ${process.env.GRAFANA_TOKEN}`
@@ -42,6 +43,7 @@ axios({
         'A':res.data.results.A.frames[0].data.values[1].sort(function (a, b) {  return b-a;  }),
         'Q':res.data.results.Q.frames[0].data.values[1].sort(function (a, b) {  return b-a;  })
     }
+    console.log(out);
     fs.writeFile('/code/output.json',out,err => {
         if (err) {
           console.error(err);
