@@ -2,9 +2,10 @@ const axios = require('axios')
 require('dotenv').config()
 const url = 'http://ingra01p1.dev.smf1.mobitv:3000'
 const fs = require('fs')
+// open the output file in append mode
 var stream = fs.createWriteStream('/code/output', {flags: 'a'});
 const hosts = require('./hosts')
-console.log(process.env.GRAFANA_TOKEN)
+
 axios({
     method:'post',
     url:`${url}/api/ds/query`,
