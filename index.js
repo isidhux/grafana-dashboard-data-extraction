@@ -63,6 +63,7 @@ async function getValues(hosts,stream){
             }
         })
     })
+    console.log(promises)
     const resolved = await Promise.all(promises)
     console.log(resolved)
     await resolved.forEach((res,i)=>{
