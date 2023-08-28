@@ -2,6 +2,7 @@ const axios = require('axios')
 require('dotenv').config()
 const url = 'http://ingra01p1.dev.smf1.mobitv:3000'
 const fs = require('fs')
+var stream = fs.createWriteStream('/code/output', {flags: 'a'});
 const hosts = require('./hosts')
 console.log(process.env.GRAFANA_TOKEN)
 axios({
@@ -64,11 +65,13 @@ axios({
         'Q':res.data.results.Q.frames[0].data.values[1].sort(function (a, b) {  return b-a;  })
     }
     console.log(out);
-    const final = `biehd01p1.dev.smf1.mobitv  => max-cpu-kernel: ${out['A'][0]} mem-apps: ${out['Q'][0]/1073741824} \n`
+    const mem = out['Q'][0]/1073741824
+    const cpu = out['A'][0]
+    const final = `biehd01p1.dev.smf1.mobitv  => max-cpu-kernel: ${cpu.toPrecision(4)} mem-apps: ${mem.toPrecision(4)} \n`
     console.log(final);
-    fs.writeFile('/code/output',final,err => {
+    stream.write('/code/output',final,err => {
         if (err) {
           console.error(err);
         }
     })
-})
+}).then(()=>stream.end())
