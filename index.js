@@ -7,7 +7,7 @@ var stream = fs.createWriteStream('/code/output', {flags: 'a'});
 const hosts = require('./hosts')
 async function getValues(hosts,stream){
     const promises = hosts.map(async (host)=>{
-        await axios({
+        return await axios({
             method:'post',
             url:`${url}/api/ds/query`,
             headers:{
