@@ -68,8 +68,8 @@ async function getValues(hosts,stream){
     console.log(resolved)
     await resolved.forEach((res,i)=>{
         const out={
-            'A':res.data.results.A.frames[0].data.values[1].sort(function (a, b) {  return b-a;  }),
-            'Q':res.data.results.Q.frames[0].data.values[1].sort(function (a, b) {  return b-a;  })
+            'A':res.value.data.results.A.frames[0].data.values[1].sort(function (a, b) {  return b-a;  }),
+            'Q':res.value.data.results.Q.frames[0].data.values[1].sort(function (a, b) {  return b-a;  })
         }
         //console.log(out);
         const mem = out['Q'][0]/1073741824
