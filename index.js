@@ -74,7 +74,7 @@ async function getValues(hosts,stream){
         //console.log(out);
         const mem = out['Q'][0]/1073741824
         const cpu = out['A'][0]
-        const final = `${hosts[i]}  => max-cpu-kernel: ${cpu.toPrecision(4)} mem-apps: ${mem.toPrecision(4)} \n`
+        const final = `${hosts[i]}  => max-cpu-kernel: ${cpu.toFixed(2)} mem-apps: ${mem.toFixed(2)} \n`
         console.log(final)
         stream.write(final)
     })
