@@ -57,7 +57,7 @@ async function getValues(hosts,stream){
                     "maxDataPoints": 509
                   }
                 ],
-                "range":{"from": "2023-07-26T06:01:24.776Z", "to": "2023-08-25T06:01:24.776Z", "raw": {"from": "now-30d", "to": "now"}},
+                "range":{"from": "2023-07-26T06:01:24.776Z", "to": "2023-08-25T06:01:24.776Z", "raw": {"from": "now-5m", "to": "now"}},
                 "from":"1690636835601",
                 "to":"1693228835601"
             }
